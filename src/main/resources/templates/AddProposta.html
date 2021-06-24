@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Intenção de Financiamento</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Realizar Propostas</h1>
+		</div>
+		<div class="panel-body">
+
+			<form class="form-inline" method="POST" th:object="${proposta}"
+				th:action="@{/propostas}" style="margin: 20px 0">
+				<input type="text" class="form-control" placeholder="Nome do Cliente" th:field="*{nome}"/>
+				<input type="text" class="form-control" placeholder="Endereço" th:field="*{endereço}"/>
+				<input type="text" class="form-control" placeholder="n°" th:field="*{numero}"/>
+				<input type="text" class="form-control" placeholder="Cidade" th:field="*{cidade}"/>
+				<input type="text" class="form-control" placeholder="Estado" th:field="*{estado}"/>
+				<input type="text" class="form-control" placeholder="CEP" th:field="*{cep}"/>
+				<input type="text" class="form-control" placeholder="CPF" th:field="*{cpf}"/>
+				<input type="text" class="form-control" placeholder="RG" th:field="*{rg}"/>
+				<input type="text" class="form-control" placeholder="Data de Nasc" th:field="*{nascimento}"/>
+				<input type="email" class="form-control" placeholder="E-mail" th:field="*{email}"/>
+				<input type="text" class="form-control" placeholder="Tel Residencial" th:field="*{telefone}"/>
+				<input type="text" class="form-control" placeholder="Celular" th:field="*{celular}"/>
+				 <label for="fianciamento">Tipo de Fianciamento</label>
+					<select id="financiamento" name="financiamento">
+					  <option value="sac">SAC</option>
+					  <option value="price">PRICE</option>
+					</select> 
+				<input type="text" class="form-control" placeholder="Quantidade de Parcelas" th:field="*{parcelas}"/>
+				<input type="text" class="form-control" placeholder="Valor" th:field="*{valor}"/>
+				<input type="text" class="form-control" placeholder="Salário" th:field="*{salario}"/>
+				
+				
+				
+				
+				
+			</form>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cliente</th>
+						<th>Tipo de Financiamento</th>
+						<th>Valor da Intenção</th>
+						<th>Quant Parcelamento</th>
+						<th>
+						<div class="form-group">
+						<button type="submit" class="btn btn-primary">Detalhar Proposta</button>
+						</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="proposta : ${propostas}">
+						<td th:text="${proposta.nome}"></td>
+						<td th:text="${proposta.valor}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Propostas Realizadas</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de Propostas</h1>
+		</div>
+		<div class="panel-body">
+
+			<form class="form-inline" method="POST" th:object="${proposta}"
+				th:action="@{/propostas}" style="margin: 20px 0">
+				<div class="form-group">
+					<a href='AddProposta.html'><button type="submit" class="btn btn-primary" >Adicionar Nova Proposta</button></a>
+				</div>
+			</form>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Cliente</th>
+						<th>Tipo de Financiamento</th>
+						<th>Valor da Intenção</th>
+						<th>Quant Parcelamento</th>
+						<th>
+						<div class="form-group">
+						<button type="submit" class="btn btn-primary">Detalhar Nova Proposta</button>
+						</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="proposta : ${propostas}">
+						<td th:text="${proposta.nome}"></td>
+						<td th:text="${proposta.valor}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+	
+</body>
+</html>
